@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Conseiller - Suivi</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="{{ theme }}">
+    <div class="header">
+        <h1>Espace Conseiller</h1>
+        <button onclick="window.location.href='/toggle_theme'" class="theme-toggle">
+            {% if theme == 'light' %}🌙 Mode sombre{% else %}☀️ Mode clair{% endif %}
+        </button>
+        <a href="/logout">Déconnexion</a>
+    </div>
+    <div class="container">
+        <div class="card">
+            <h2>Liste des élèves orientés</h2>
+            <table>
+                <tr><th>Nom</th><th>Matricule</th><th>Âge</th><th>Orientation</th></tr>
+                {% for eleve in eleves %}
+                <tr><td>{{ eleve[0] }}</td><td>{{ eleve[1] }}</td><td>{{ eleve[2] }}</td><td>{{ eleve[3] if eleve[3] else 'Non orienté' }}</td></tr>
+                {% endfor %}
+            </table>
+            <a href="/dashboard">Retour</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Résultat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1"></script>
+</head>
+<body class="{{ theme }}">
+    <div class="header">
+        <h1>Votre orientation</h1>
+        <button onclick="window.location.href='/toggle_theme'" class="theme-toggle">
+            {% if theme == 'light' %}🌙 Mode sombre{% else %}☀️ Mode clair{% endif %}
+        </button>
+    </div>
+    <div class="container">
+        <div class="card result-{{ orientation.type|lower }}">
+            <h1>{% if orientation.type == 'Scientifique' %}🔬 Série Scientifique{% else %}📚 Série Littéraire{% endif %}</h1>
+            <p>Félicitations !</p>
+        </div>
+        <div class="averages">
+            <div class="avg-card"><h3>📊 Moyenne Scientifique</h3><div class="avg-value">{{ "%.2f"|format(orientation.moyenne_sci) }}/20</div></div>
+            <div class="avg-card"><h3>📚 Moyenne Littéraire</h3><div class="avg-value">{{ "%.2f"|format(orientation.moyenne_lit) }}/20</div></div>
+        </div>
+        <div class="card"><h3>💼 Métiers possibles</h3>
+            {% if orientation.type == 'Scientifique' %}
+                <ul><li>Médecin (3000-8000€)</li><li>Ingénieur (2800-6000€)</li><li>Architecte (2500-7000€)</li><li>Pharmacien (2500-6000€)</li><li>Vétérinaire (2200-5000€)</li></ul>
+            {% else %}
+                <ul><li>Avocat (3000-10000€)</li><li>Journaliste (1800-4500€)</li><li>Enseignant (2000-3500€)</li><li>Psychologue (2200-5000€)</li><li>Écrivain (variable)</li></ul>
+            {% endif %}
+        </div>
+        <a href="/dashboard" class="btn">Retour</a>
+    </div>
+    <script>canvasConfetti({particleCount:200,spread:70,origin:{y:0.6}});setTimeout(()=>{canvasConfetti({particleCount:150,spread:100})},500);</script>
+</body>
+</html>

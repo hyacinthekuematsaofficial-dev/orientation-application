@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulaire de notes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="{{ theme }}">
+    <div class="header">
+        <h1>Entrez vos notes</h1>
+        <button onclick="window.location.href='/toggle_theme'" class="theme-toggle">
+            {% if theme == 'light' %}🌙 Mode sombre{% else %}☀️ Mode clair{% endif %}
+        </button>
+    </div>
+    <div class="container">
+        <div class="card">
+            <form method="POST">
+                <div class="form-row"><div class="form-group"><label>Mathématiques (x3)</label><input type="number" step="0.5" name="mathematiques" required></div></div>
+                <div class="form-row"><div class="form-group"><label>Anglais (x2)</label><input type="number" step="0.5" name="anglais" required></div></div>
+                <div class="form-row"><div class="form-group"><label>Français (x2)</label><input type="number" step="0.5" name="francais" required></div></div>
+                <div class="form-row"><div class="form-group"><label>Physique-Chimie (x3)</label><input type="number" step="0.5" name="physique_chimie" required></div></div>
+                <div class="form-row"><div class="form-group"><label>SVT (x2)</label><input type="number" step="0.5" name="svt" required></div></div>
+                <div class="form-row"><div class="form-group"><label>Histoire (x2)</label><input type="number" step="0.5" name="histoire" required></div></div>
+                <div class="form-row"><div class="form-group"><label>Éducation civique (x2)</label><input type="number" step="0.5" name="education_civique" required></div></div>
+                <div class="form-row"><div class="form-group"><label>Géographie (x2)</label><input type="number" step="0.5" name="geographie" required></div></div>
+                <button type="submit" class="btn">Calculer</button>
+            </form>
+            <a href="/dashboard">Retour</a>
+        </div>
+    </div>
+</body>
+</html>

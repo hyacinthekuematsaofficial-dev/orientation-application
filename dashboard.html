@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tableau de bord</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="{{ theme }}">
+    <div class="header">
+        <h1>Tableau de bord</h1>
+        <div>
+            <button onclick="window.location.href='/toggle_theme'" class="theme-toggle">
+                {% if theme == 'light' %}🌙 Mode sombre{% else %}☀️ Mode clair{% endif %}
+            </button>
+            <span>Bonjour {{ nom }}</span>
+            <a href="/logout">Déconnexion</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card">
+            <h2>Bienvenue {{ nom }} !</h2>
+            <p>Rôle : {{ role }}</p>
+            {% if role == 'eleve' %}
+                <a href="/formulaire_notes" class="btn">Remplir mes notes</a>
+                <a href="/resultat" class="btn">Voir mon résultat</a>
+            {% elif role == 'admin' %}
+                <a href="/admin/dashboard" class="btn">Gérer les utilisateurs</a>
+            {% elif role == 'conseiller' %}
+                <a href="/conseiller/dashboard" class="btn">Consulter les élèves</a>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

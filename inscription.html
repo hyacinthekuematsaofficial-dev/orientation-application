@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inscription</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="{{ theme }}">
+    <div class="header">
+        <h1>Inscription</h1>
+        <button onclick="window.location.href='/toggle_theme'" class="theme-toggle">
+            {% if theme == 'light' %}🌙 Mode sombre{% else %}☀️ Mode clair{% endif %}
+        </button>
+    </div>
+    <div class="container">
+        <div class="card">
+            <form method="POST">
+                <label>Nom :</label>
+                <input type="text" name="nom" required>
+                <label>Matricule :</label>
+                <input type="text" name="matricule" required>
+                <label>Âge :</label>
+                <input type="number" name="age" required>
+                <label>Rôle :</label>
+                <select name="role">
+                    <option value="eleve">Élève</option>
+                    <option value="conseiller">Conseiller</option>
+                    <option value="admin">Admin</option>
+                </select>
+                <label>Mot de passe :</label>
+                <input type="password" name="password" required>
+                <button type="submit" class="btn">S'inscrire</button>
+            </form>
+            <a href="/login">Déjà inscrit ? Se connecter</a>
+        </div>
+    </div>
+</body>
+</html>

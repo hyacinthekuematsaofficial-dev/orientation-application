@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Connexion</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="{{ theme }}">
+    <div class="header">
+        <h1>Connexion</h1>
+        <button onclick="window.location.href='/toggle_theme'" class="theme-toggle">
+            {% if theme == 'light' %}🌙 Mode sombre{% else %}☀️ Mode clair{% endif %}
+        </button>
+    </div>
+    <div class="container">
+        <div class="card">
+            <form method="POST">
+                <label>Matricule :</label>
+                <input type="text" name="matricule" required>
+                <label>Mot de passe :</label>
+                <input type="password" name="password" required>
+                <button type="submit" class="btn">Se connecter</button>
+            </form>
+            <a href="/inscription">Pas de compte ? S'inscrire</a>
+        </div>
+    </div>
+</body>
+</html>
